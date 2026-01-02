@@ -119,8 +119,8 @@ model_SDACVF <- aov_4(SDA ~ CVF_center + Attention + Feedback
 						observed = c('CVF_center'),
 						factorize = FALSE,
 						anova_table = list(es=c("ges","pes"), sig_symbols=rep("",4)))
-model_SDACVF_etap <- eta_squared(model_SDACVF, partial=TRUE, alternative='two.sided')
-model_SDACVF_etag <- eta_squared(model_SDACVF, generalized=TRUE, alternative='two.sided')
+model_SDACVF_etap <- eta_squared(model_SDACVF, partial=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
+model_SDACVF_etag <- eta_squared(model_SDACVF, generalized=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
 print(model_SDACVF_etap)
 print(model_SDACVF_etag)
 
@@ -134,8 +134,8 @@ model_SDFF <- aov_4(SDF ~ F_center + Attention + Feedback
 						observed = c('F_center'),
 						factorize = FALSE,
 						anova_table = list(es=c("ges","pes"), sig_symbols=rep("",4)))
-model_SDFF_etap <- eta_squared(model_SDFF, partial=TRUE, alternative='two.sided')
-model_SDFF_etag <- eta_squared(model_SDFF, generalized=TRUE, alternative='two.sided')
+model_SDFF_etap <- eta_squared(model_SDFF, partial=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
+model_SDFF_etag <- eta_squared(model_SDFF, generalized=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
 print(model_SDFF_etap)
 print(model_SDFF_etag)
 
@@ -149,8 +149,8 @@ model_CVFF <- aov_4(CVF ~ Finv_center + Attention + Feedback
 						observed = c('Finv_center'),
 						factorize = FALSE,
 						anova_table = list(es=c("ges","pes"), sig_symbols=rep("",4)))
-model_CVFF_etap <- eta_squared(model_CVFF, partial=TRUE, alternative='two.sided')
-model_CVFF_etag <- eta_squared(model_CVFF, generalized=TRUE, alternative='two.sided')
+model_CVFF_etap <- eta_squared(model_CVFF, partial=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
+model_CVFF_etag <- eta_squared(model_CVFF, generalized=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
 print(model_CVFF_etap)
 print(model_CVFF_etag)
 
@@ -164,8 +164,8 @@ model_MSJF <- aov_4(lognormMSJ ~ lognormF_center + Attention + Feedback
 						observed = c('lognormF_center'),
 						factorize = FALSE,
 						anova_table = list(es=c("ges","pes"), sig_symbols=rep("",4)))
-model_MSJF_etap <- eta_squared(model_MSJF, partial=TRUE, alternative='two.sided')
-model_MSJF_etag <- eta_squared(model_MSJF, generalized=TRUE, alternative='two.sided')
+model_MSJF_etap <- eta_squared(model_MSJF, partial=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
+model_MSJF_etag <- eta_squared(model_MSJF, generalized=TRUE, alternative='two.sided',ci=0.9875) # Bonferroni-corrected CI (4 comparisons)
 print(model_MSJF_etap)
 print(model_MSJF_etag)
 
