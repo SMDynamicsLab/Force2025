@@ -1,6 +1,6 @@
-%% Figures from Versaci & Laje 2025
+%% Figures from Versaci & Laje 2024
 %
-% RUN FIRST '../data/VersaciLaje2025_preprocess_data.m'
+% RUN FIRST '../data/VersaciLaje2024_preprocess_data.m'
 % set current directory to /analysis
 
 
@@ -23,7 +23,7 @@ msize = 4;
 
 titles={'NORMAL NoFBK','NORMAL WithFBK','HIGH NoFBK','HIGH WithFBK'};
 
-confidence = 95;
+confidence = 98.75;%95; % Bonferroni corrected for 4 comparisons
 alpha = 1-confidence/100;
 probability = 1-alpha/2;
 
@@ -77,6 +77,7 @@ subject=[[1:22]';[1:22]';[23:44]';[23:44]'];
 tbl=table(subject,YY,CONf,HIGH,XX);
 % lme = fitlme(tbl,'YY ~ 1 + CONf + HIGH + XX + CONf:HIGH + XX:CONf + XX:HIGH + (1|subject)');
 lme = fitlme(tbl,'YY ~ 1 + CONf + HIGH + XX + CONf:HIGH + XX:CONf + XX:HIGH + (1|subject)','DummyVarCoding','effects');
+correctedCI = coefCI(lme,'Alpha',alpha);
 lme_anova = anova(lme);
 
 
@@ -110,7 +111,6 @@ end
 
 % confidence intervals of regression
 % ref: https://rpubs.com/aaronsc32/regression-confidence-prediction-intervals
-alpha/2;
 n=size(X,1);
 df=n-2; %degrees of freedom
 t_score=tinv(probability,df);
@@ -166,9 +166,11 @@ fig.PaperSize = [fig_pos(3) fig_pos(4)];
 tightfig(h1);
 
 
-disp([newline '<strong>FIGURE 2: SDe vs CVF</strong>']);
+disp([newline '<strong>FIGURE 2: SDA vs CVF</strong>']);
 disp(['R^2=' num2str(round(100*RSquared_LMM,4)/100)]);
 disp(lme);
+disp('Corrected CI:');
+disp(correctedCI);
 disp(lme_anova);
 print(h1,'-dpdf','-bestfit','./figure2_SDA_vs_CVF.pdf');
 
@@ -234,6 +236,7 @@ subject=[[1:22]';[1:22]';[23:44]';[23:44]'];
 
 tbl=table(subject,YY,CONf,HIGH,XX);
 lme = fitlme(tbl,'YY ~ 1 + CONf + HIGH + XX + CONf:HIGH + XX:CONf +XX:HIGH+ (1|subject)');
+correctedCI = coefCI(lme,'Alpha',alpha);
 lme_amova = anova(lme);
 
 % slope and intercept for every condition
@@ -324,6 +327,8 @@ tightfig(h2);
 disp([newline '<strong>FIGURE 3: SDF vs F</strong>']);
 disp(['R^2=' num2str(round(100*RSquared_LMM,4)/100)]);
 disp(lme);
+disp('Corrected CI:');
+disp(correctedCI);
 disp(lme_anova);
 print(h2,'-dpdf','-bestft','./figure4_SDF_vs_F.pdf');
 
@@ -376,6 +381,7 @@ subject=[[1:22]';[1:22]';[23:44]';[23:44]'];
 
 tbl=table(subject,YY,CONf,HIGH,XX);
 lme = fitlme(tbl,'YY ~ 1 + CONf + HIGH + XX + CONf:HIGH + XX:CONf +XX:HIGH+ (1|subject)');
+correctedCI = coefCI(lme,'Alpha',alpha);
 lme_anova = anova(lme);
 
 % slope and intercept for every condition
@@ -466,6 +472,8 @@ tightfig(h3);
 disp([newline '<strong>FIGURE 4: CVF vs F</strong>']);
 disp(['R^2=' num2str(round(100*RSquared_LMM,4)/100)]);
 disp(lme);
+disp('Corrected CI:');
+disp(correctedCI);
 disp(lme_anova);
 print(h3,'-dpdf','-bestfit','./figure5_CVF_vs_F.pdf');
 
@@ -530,6 +538,7 @@ subject=[[1:22]';[1:22]';[23:44]';[23:44]'];
 
 tbl=table(subject,YY,CONf,HIGH,XX);
 lme = fitlme(tbl,'YY ~ 1 + CONf + HIGH + XX + CONf:HIGH + XX:CONf +XX:HIGH+ (1|subject)');
+correctedCI = coefCI(lme,'Alpha',alpha);
 lme_anova = anova(lme);
 
 % slope and intercept for every condition
@@ -621,6 +630,8 @@ tightfig(h4);
 disp([newline '<strong>FIGURE 5: MSJ vs F</strong>']);
 disp(['R^2=' num2str(round(100*RSquared_LMM,4)/100)]);
 disp(lme);
+disp('Corrected CI:');
+disp(correctedCI);
 disp(lme_anova);
 print(h4,'-dpdf','-bestfit','./figure6_MSJ_vs_F.pdf');
 
