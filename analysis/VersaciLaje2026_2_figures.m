@@ -1,6 +1,6 @@
-%% Figures from Versaci & Laje 2024
+%% Figures from Versaci & Laje 2026
 %
-% RUN FIRST '../data/VersaciLaje2024_preprocess_data.m'
+% RUN FIRST '../data/VersaciLaje2026_1_preprocess_data.m'
 % set current directory to /analysis
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Effect size calculation - Force manuscript"
+title: "Effect size calculation - Versaci & Laje (2026), Tapping force variability influences temporal precision in paced finger tapping"
 output: pdf_document
 date: "2024-07-01"
 ---
@@ -25,7 +25,6 @@ library(effectsize)
 ```{r load_data, echo=FALSE}
 
 
-# data_path <- '/home/rodrigo/labo/proyectos/fuerza/manuscrito/repositorio/data/'
 data_path <- '../data/'
 condition_colnames <- c('Normal-NoFBK','Normal-WithFBK','High-NoFBK','High-WithFBK')
 subject_df <- data.frame(c(c(1:22),c(1:22),c(23:44),c(23:44)))
